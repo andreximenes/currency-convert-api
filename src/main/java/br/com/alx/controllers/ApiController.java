@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.alx.components.Conversor;
 import br.com.alx.models.RequisicaoConversao;
+import br.com.alx.services.Conversor;
 import br.com.alx.models.Conversao;
 
 @RestController

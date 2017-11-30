@@ -1,22 +1,22 @@
-package br.com.alx.components;
+package br.com.alx.services;
 
 import java.io.IOException;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.HashMap;
+
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
+import org.springframework.stereotype.Service;
 
-import org.springframework.stereotype.Component;
-
-import br.com.alx.models.RequisicaoConversao;
 import br.com.alx.models.Conversao;
+import br.com.alx.models.RequisicaoConversao;
 
-@Component
-public class Conversor implements Serializable {
+@Service
+public class Conversor {
 	
 	private final static String USER_AGENT = "Mozilla/5.0";
 	private static final String URL_COTACAO = "https://economia.uol.com.br/cotacoes/";
