@@ -1,20 +1,20 @@
-package br.com.alx.models;
+package br.com.alx.messages;
 
 import java.io.Serializable;
 
-public class ModelPrincipal implements Serializable{
+public class MainMessage implements Serializable{
 	
 	private static final long serialVersionUID = 6317548054974261756L;
 	
 	private String de;
 	private String para;
 	
-	public ModelPrincipal(String de, String para) {
+	public MainMessage(String de, String para) {
 		super();
 		this.de = de;
 		this.para = para;
 	}
-	public ModelPrincipal() {
+	public MainMessage() {
 		super();
 		// TODO Auto-generated constructor stub
 	}

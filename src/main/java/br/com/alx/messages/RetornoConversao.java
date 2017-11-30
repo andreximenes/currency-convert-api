@@ -1,4 +1,4 @@
-package br.com.alx.models;
+package br.com.alx.messages;
 
 public class RetornoConversao {
 	

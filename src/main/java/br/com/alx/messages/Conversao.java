@@ -1,8 +1,8 @@
-package br.com.alx.models;
+package br.com.alx.messages;
 
 import java.math.BigDecimal;
 
-public class Conversao extends ModelPrincipal{
+public class Conversao extends MainMessage{
 	
 	private static final long serialVersionUID = -1030976682802986920L;
 	

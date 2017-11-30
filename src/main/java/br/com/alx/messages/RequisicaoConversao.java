@@ -1,8 +1,8 @@
-package br.com.alx.models;
+package br.com.alx.messages;
 
 import java.math.BigDecimal;
 
-public class RequisicaoConversao extends ModelPrincipal{
+public class RequisicaoConversao extends MainMessage{
 	
 	private static final long serialVersionUID = 9015379319939839728L;
 

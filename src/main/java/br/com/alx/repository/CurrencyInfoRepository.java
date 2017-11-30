@@ -1,0 +1,11 @@
+package br.com.alx.repository;
+
+import java.util.List;
+import org.springframework.data.jpa.repository.JpaRepository;
+import br.com.alx.domain.CurrencyInfo;
+
+public interface CurrencyInfoRepository extends JpaRepository<CurrencyInfo, Integer> {
+	
+	public CurrencyInfo findByCountryAndCurrencyCode(String country, String currencyCode);
+	public List<CurrencyInfo> findAllByCurrencyCode(String currencyCode);
+}
