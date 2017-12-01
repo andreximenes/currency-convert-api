@@ -5,6 +5,8 @@ import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 public class CurrencyInfo implements Serializable {
 
@@ -18,17 +20,19 @@ public class CurrencyInfo implements Serializable {
 	private String currencyCode;
 	private String monetarySymbol;
 	private BigDecimal quote;
+	@JsonFormat(pattern="dd-MM-yyyy HH:mm:ss")
 	private Date updateDate;
 
 	public CurrencyInfo() {
 		super();
 	}
 
-	public CurrencyInfo(String country, String currencyName, String currencyCode, BigDecimal quote, Date updateDate) {
+	public CurrencyInfo(String country, String currencyName, String currencyCode, String monetarySymbol, BigDecimal quote, Date updateDate) {
 		super();
 		this.country 	  = country;
 		this.currencyName = currencyName;
 		this.currencyCode = currencyCode;
+		this.monetarySymbol = monetarySymbol;
 		this.quote 		  = quote;
 		this.updateDate   = updateDate;
 	}

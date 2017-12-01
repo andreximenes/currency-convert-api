@@ -8,4 +8,7 @@ public interface CurrencyInfoRepository extends JpaRepository<CurrencyInfo, Inte
 	
 	public CurrencyInfo findByCountryAndCurrencyCode(String country, String currencyCode);
 	public List<CurrencyInfo> findAllByCurrencyCode(String currencyCode);
+	public CurrencyInfo findByCountry(String country);
+	public boolean existsByCountryAndCurrencyCode(String country, String currencyCode);
+	public CurrencyInfo findOneByCurrencyCode(String currencyCode);
 }

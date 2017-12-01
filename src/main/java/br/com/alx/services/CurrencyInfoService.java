@@ -13,4 +13,8 @@ public interface CurrencyInfoService {
 	public void delete(Integer id);
 	public List<CurrencyInfo> findAll();
 	public void deleteAll();
+	public CurrencyInfo findByCountry(String country);
+	public boolean existsByCountryAndCurrencyCode(String country, String currencyCode);
+	public CurrencyInfo findOneByCurrencyCode(String currencyCode);
+	public void updateQuotes(String[] quotes);
 }
