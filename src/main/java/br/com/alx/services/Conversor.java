@@ -46,12 +46,12 @@ public class Conversor {
 		String[] cotacoes = fetchCotacoes();
 		for (int i=0; i<cotacoes.length; i++){
 			
-			if (moedaXCotacao.containsKey(Util.currencyCode[i])){
+			if (moedaXCotacao.containsKey(Util.currencyCodes[i])){
 				//System.out.println(siglasMoedas[i]+ "-"+i + " = " + cotacoes[i]);
-				moedaXCotacao.put(Util.currencyCode[i] + "-" + i, new BigDecimal(cotacoes[i]));
+				moedaXCotacao.put(Util.currencyCodes[i] + "-" + i, new BigDecimal(cotacoes[i]));
 			} else {
 				//System.out.println(siglasMoedas[i] + " = " + cotacoes[i]);
-				moedaXCotacao.put(Util.currencyCode[i], new BigDecimal(cotacoes[i]));
+				moedaXCotacao.put(Util.currencyCodes[i], new BigDecimal(cotacoes[i]));
 			}
 			
 		}

@@ -16,11 +16,10 @@ public class CurrencyInfo implements Serializable {
 	private String country;
 	private String currencyName;
 	private String currencyCode;
+	private String monetarySymbol;
 	private BigDecimal quote;
 	private Date updateDate;
 
-	
-	
 	public CurrencyInfo() {
 		super();
 	}
@@ -84,5 +83,14 @@ public class CurrencyInfo implements Serializable {
 	public void setUpdateDate(Date updateDate) {
 		this.updateDate = updateDate;
 	}
+
+	public String getMonetarySymbol() {
+		return monetarySymbol;
+	}
+	public void setMonetarySymbol(String monetarySymbol) {
+		this.monetarySymbol = monetarySymbol;
+	}
+	
+	
 
 }
