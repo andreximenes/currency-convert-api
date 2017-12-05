@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.*;
+import javax.validation.constraints.Digits;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -19,8 +20,11 @@ public class CurrencyInfo implements Serializable {
 	private String currencyName;
 	private String currencyCode;
 	private String monetarySymbol;
+	
+	@Digits(integer=10, fraction=4)
+	@Column(name = "quote")
 	private BigDecimal quote;
-	@JsonFormat(pattern="dd-MM-yyyy HH:mm:ss")
+	
 	private Date updateDate;
 
 	public CurrencyInfo() {

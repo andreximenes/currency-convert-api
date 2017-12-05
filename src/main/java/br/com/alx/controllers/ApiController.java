@@ -47,11 +47,18 @@ public class ApiController {
 	@GetMapping("/atualiza-cotacao")
 	public List<CurrencyInfo> atualizaCotacoes(){
 		try {
-			conversor.atualizaCotacao();
+			conversor.updateQuotes();
 		} catch (ConverterServiceException e) {
 			e.printStackTrace();
 		}
 		return service.findAll();
+	}
+	
+
+	@ResponseBody
+	@GetMapping("ci/{country}")
+	public CurrencyInfo getLista(@PathVariable String country) {
+		return service.findByCountry(country.toUpperCase());
 	}
 	
 }

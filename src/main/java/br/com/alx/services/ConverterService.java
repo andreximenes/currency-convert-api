@@ -35,9 +35,9 @@ public class ConverterService {
 			conn.ignoreHttpErrors(true);		
 			conn.userAgent(USER_AGENT);
 			Document doc = conn.get();
-			Elements cotacoes = doc.getElementsByAttributeValue("id", "calculadora").prev().prev();
-			String cotacoesAsString = cotacoes.toString();
-			String dadosCotacao = cotacoesAsString.substring(cotacoesAsString.indexOf("("), cotacoesAsString.indexOf(")"));
+			Elements quotes = doc.getElementsByAttributeValue("id", "calculadora").prev().prev();
+			String quotesAsString = quotes.toString();
+			String dadosCotacao = quotesAsString.substring(quotesAsString.indexOf("("), quotesAsString.indexOf(")"));
 			dadosCotacao = dadosCotacao.replace("(", "").replace(")", ")").replace("\",\"", "#").replace("\"", "").replace(",", ".");
 			listaCotacoes = dadosCotacao.split("#");
 		} catch(Exception e) {
@@ -49,7 +49,7 @@ public class ConverterService {
 
 	
 	
-	private void atualizaCotacoes() throws ConverterServiceException{
+	public void updateQuotes() throws ConverterServiceException{
 		String[] quotes = fetchCotacoes();
 		ciService.updateQuotes(quotes);
 		
@@ -66,20 +66,9 @@ public class ConverterService {
 		BigDecimal cotacaoDE= ciFrom.getQuote();
 		BigDecimal cotacaoPARA= ciTo.getQuote();
 		BigDecimal valorReal = valorAConverter.multiply(cotacaoDE);
-		BigDecimal valorConvertiro = valorReal.divide(cotacaoPARA,2, RoundingMode.HALF_UP);
+		BigDecimal valorConvertiro = valorReal.divide(cotacaoPARA,2, RoundingMode.HALF_EVEN);
 		
 		retorno.setTotal(valorConvertiro);
 		return retorno;
 	}
-	
-	
-	// transformar esse método em um metodo executado periodicamente
-	public void atualizaCotacao() throws ConverterServiceException {
-		atualizaCotacoes();
-	}
-	
-	
-	
-
-
 }

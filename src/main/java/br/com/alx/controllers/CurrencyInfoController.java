@@ -32,11 +32,4 @@ public class CurrencyInfoController {
 	}
 	
 	
-	@ResponseBody
-	@GetMapping("ci/{country}")
-	public CurrencyInfo getLista(@PathVariable String country) {
-		return service.findByCountry(country.toUpperCase());
-	}
-	
-	
 }

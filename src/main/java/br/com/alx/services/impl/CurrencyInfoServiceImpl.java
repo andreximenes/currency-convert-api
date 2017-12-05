@@ -61,7 +61,8 @@ public class CurrencyInfoServiceImpl implements CurrencyInfoService {
 	@Override
 	@Transactional(readOnly = true)
 	public CurrencyInfo findByCountry(String country) {
-		return repository.findByCountry(country);
+		CurrencyInfo ci = repository.findByCountry(country);
+		return ci;
 	}
 
 	@Override
