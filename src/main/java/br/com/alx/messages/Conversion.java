@@ -8,8 +8,8 @@ public class Conversion extends MainMessage{
 	
 	private BigDecimal total;
 	
-	public Conversion(String de, String para) {
-		super(de, para);
+	public Conversion(String from, String to) {
+		super(from, to);
 	}
 
 	public Conversion() {

@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.alx.domain.CurrencyInfo;
+import br.com.alx.exceptions.CurrencyCodeInvalidOrNotFountException;
+import br.com.alx.exceptions.CurrencyInfoInvalidOrNotFountException;
 import br.com.alx.repository.CurrencyInfoRepository;
 import br.com.alx.services.CurrencyInfoService;
 import br.com.alx.utils.Util;
@@ -60,8 +62,11 @@ public class CurrencyInfoServiceImpl implements CurrencyInfoService {
 
 	@Override
 	@Transactional(readOnly = true)
-	public CurrencyInfo findByCountry(String country) {
+	public CurrencyInfo findByCountry(String country) throws CurrencyInfoInvalidOrNotFountException {
 		CurrencyInfo ci = repository.findByCountry(country);
+		if (ci == null) {
+			throw new CurrencyInfoInvalidOrNotFountException(country);
+		}
 		return ci;
 	}
 
@@ -90,11 +95,21 @@ public class CurrencyInfoServiceImpl implements CurrencyInfoService {
 				ci = new CurrencyInfo(Util.countryNames[i],
 						Util.getCurrencyNameByCountry(Util.countryNames[i]), 
 						Util.getCurrencyCodeByCountry(Util.countryNames[i]), 
-						"", new BigDecimal(quotes[i]), new Date());
+						null
+						, new BigDecimal(quotes[i]), new Date());
 			}
 			repository.save(ci);
 		}
 		
+	}
+
+	@Override
+	public CurrencyInfo findFirstByCurrencyCode(String currencyCode) throws CurrencyCodeInvalidOrNotFountException {
+		CurrencyInfo ret = repository.findFirstByCurrencyCode(currencyCode);
+		if (ret == null) {
+			throw new CurrencyCodeInvalidOrNotFountException(currencyCode);
+		}
+		return ret;
 	}
 
 }

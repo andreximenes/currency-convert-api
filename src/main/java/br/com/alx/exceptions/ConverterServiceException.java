@@ -7,7 +7,4 @@ public class ConverterServiceException extends Exception{
 	public ConverterServiceException(String message) {
 		super(message);
 	}
-	
-	
-
 }

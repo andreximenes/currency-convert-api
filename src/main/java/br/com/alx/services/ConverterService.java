@@ -13,8 +13,10 @@ import org.springframework.stereotype.Service;
 
 import br.com.alx.domain.CurrencyInfo;
 import br.com.alx.exceptions.ConverterServiceException;
+import br.com.alx.exceptions.CurrencyCodeInvalidOrNotFountException;
+import br.com.alx.exceptions.CurrencyInfoInvalidOrNotFountException;
 import br.com.alx.messages.Conversion;
-import br.com.alx.messages.RequisicaoConversao;
+import br.com.alx.messages.RequestConverter;
 
 @Service
 public class ConverterService {
@@ -41,34 +43,29 @@ public class ConverterService {
 			dadosCotacao = dadosCotacao.replace("(", "").replace(")", ")").replace("\",\"", "#").replace("\"", "").replace(",", ".");
 			listaCotacoes = dadosCotacao.split("#");
 		} catch(Exception e) {
-			throw  new ConverterServiceException("Erro ao buscar cotações na fonte: " + URL_COTACAO);
+			throw  new ConverterServiceException("Error to fetch quotes in source: " + URL_COTACAO);
 		}
 		return listaCotacoes;
 	}
 
-
-	
-	
 	public void updateQuotes() throws ConverterServiceException{
 		String[] quotes = fetchCotacoes();
 		ciService.updateQuotes(quotes);
-		
 	}
 	
-	public Conversion calculate (RequisicaoConversao requisicao) throws IOException {
+	public Conversion calculate (RequestConverter request) throws IOException, CurrencyCodeInvalidOrNotFountException {
 		
-		CurrencyInfo ciFrom = ciService.findOneByCurrencyCode(requisicao.getDe());
-		CurrencyInfo ciTo 	= ciService.findOneByCurrencyCode(requisicao.getPara());
+		CurrencyInfo ciFrom = ciService.findFirstByCurrencyCode(request.getFrom());
+		CurrencyInfo ciTo 	= ciService.findFirstByCurrencyCode(request.getTo());
+		Conversion retorno  = new Conversion(request.getFrom(), request.getTo());
 		
-		Conversion retorno  = new Conversion(requisicao.getDe(), requisicao.getPara());
+		BigDecimal valorAConverter 	= request.getValue();
+		BigDecimal quoteFrom 		= ciFrom.getQuote();
+		BigDecimal quoteTo			= ciTo.getQuote();
+		BigDecimal BRLValue 		= valorAConverter.multiply(quoteFrom);
+		BigDecimal convertedValue	= BRLValue.divide(quoteTo,2, RoundingMode.HALF_EVEN);
 		
-		BigDecimal valorAConverter = requisicao.getValor();
-		BigDecimal cotacaoDE= ciFrom.getQuote();
-		BigDecimal cotacaoPARA= ciTo.getQuote();
-		BigDecimal valorReal = valorAConverter.multiply(cotacaoDE);
-		BigDecimal valorConvertiro = valorReal.divide(cotacaoPARA,2, RoundingMode.HALF_EVEN);
-		
-		retorno.setTotal(valorConvertiro);
+		retorno.setTotal(convertedValue);
 		return retorno;
 	}
 }

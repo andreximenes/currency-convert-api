@@ -37,6 +37,14 @@ public class Util {
 			"TUNISIA", "TURQUIA", "UCRANIA", "ZONA DO EURO 2", "URUGUAI", "VENEZUELA", "ZIMBABUE"    
 		};
 
+	public static String getCurrencyCodeByCountry(String countryName) {
+		return currencyCodeByCountry.get(countryName);
+	}
+	
+	public static String getCurrencyNameByCountry(String countryName) {
+		return currencyNameByCountry.get(countryName);
+	}
+
 	static {
 		// currencyCodeByCountry
 		currencyCodeByCountry = new HashMap<String, String>();
@@ -74,7 +82,7 @@ public class Util {
 		currencyCodeByCountry.put("ESLOVAQUIA"                 	, "EUR");
 		currencyCodeByCountry.put("ESLOVENIA"                  	, "EUR");
 		currencyCodeByCountry.put("ESPANHA"                    	, "EUR");
-		currencyCodeByCountry.put("ESTADOS UNIDOS DA AMERICA"  	, "USD");
+		currencyCodeByCountry.put("ESTADOS UNIDOS DA AMERICA"	, "USD");
 		currencyCodeByCountry.put("ESTONIA"                    	, "EUR");
 		currencyCodeByCountry.put("FILIPINAS"               	, "PHP");
 		currencyCodeByCountry.put("FINLANDIA"                  	, "EUR");
@@ -138,107 +146,100 @@ public class Util {
 		
 		// currencyNameByCountry
 		currencyNameByCountry = new HashMap<String, String>();
-		currencyNameByCountry.put("BRASIL"             , "Real");
-		currencyNameByCountry.put("EUA"   	 		    , "Dólar Americano");
-		currencyNameByCountry.put("ZONA DO EURO"  	    , "Euro");
-		currencyNameByCountry.put("AFRICA DO SUL"      , "Rand");
-		currencyNameByCountry.put("ALBANIA"            , "Lek");
-		currencyNameByCountry.put("ALEMANHA"           , "Euro");
-		currencyNameByCountry.put("ANGOLA"             , "Kwanza");
-		currencyNameByCountry.put("ARABIA SAUDITA"     , "Rial saudita");
-		currencyNameByCountry.put("ARGELIA"            , "Dinar");
-		currencyNameByCountry.put("ARGENTINA"          , "Peso");
-		currencyNameByCountry.put("AUSTRALIA"      	, "Dólar australiano");
-		currencyNameByCountry.put("AUSTRIA"            , "Euro");
-		currencyNameByCountry.put("BANGLADESH"         , "Teca");
-		currencyNameByCountry.put("BELARUS"            , "Rublo bielo-russo");
-		currencyNameByCountry.put("BELGICA"            , "Euro");
-		currencyNameByCountry.put("BOLIVIA"            , "Boliviano");
-		currencyNameByCountry.put("BRASIL"             , "Real");
-		currencyNameByCountry.put("BULGARIA"           , "Lev");
-		currencyNameByCountry.put("CANADA"             , "Dólar canadense");
-		currencyNameByCountry.put("CAZAQUISTAO"        , "Tenge");
-		currencyNameByCountry.put("CHILE"              , "Peso");
-		currencyNameByCountry.put("CHINA"              , "Yuan");
-		currencyNameByCountry.put("CHIPRE"             , "Euro");
-		currencyNameByCountry.put("CINGAPURA"          , "Dólar de Cingapura");
-		currencyNameByCountry.put("COLOMBIA"           , "Peso colombiano");
-		currencyNameByCountry.put("COREIA DO SUL"      , "Won sul-coreano");
-		currencyNameByCountry.put("CROACIA"            , "Kuna");
-		currencyNameByCountry.put("DINAMARCA"          , "Coroa dinamarquesa");
-		currencyNameByCountry.put("EGITO"              , "Libra egípcia");
-		currencyNameByCountry.put("EMIRADOS ARABES"    , "Dirham");
-		currencyNameByCountry.put("ESLOVAQUIA"         , "Euro");
-		currencyNameByCountry.put("ESLOVENIA"          , "Euro");
-		currencyNameByCountry.put("ESPANHA"            , "Euro");
-		currencyNameByCountry.put("ESTADOS UNIDOS"     , "Dólar Americano");
-		currencyNameByCountry.put("ESTONIA"            , "Euro");
-		currencyNameByCountry.put("FILIPINAS"          , "Peso filipino");
-		currencyNameByCountry.put("FINLANDIA"          , "Euro");
-		currencyNameByCountry.put("FRANCA"             , "Euro");
-		currencyNameByCountry.put("GRECIA"             , "Euro");
-		currencyNameByCountry.put("HOLANDA"            , "Euro");
-		currencyNameByCountry.put("HONG KONG"          , "Dólar de Hong Kong");
-		currencyNameByCountry.put("HUNGRIA"            , "Forinte");
-		currencyNameByCountry.put("INDIA"              , "Rúpia indiana");
-		currencyNameByCountry.put("INDONESIA"          , "Rúpia indonésia");
-		currencyNameByCountry.put("IRA"                , "Rial iraniano");
-		currencyNameByCountry.put("IRAQUE"             , "Dinar");
-		currencyNameByCountry.put("IRLANDA"            , "Euro");
-		currencyNameByCountry.put("ISLANDIA"           , "Coroa islandesa");
-		currencyNameByCountry.put("ISRAEL"             , "Shekel");
-		currencyNameByCountry.put("ITALIA"             , "Euro");
-		currencyNameByCountry.put("JAPAO"              , "Iene");
-		currencyNameByCountry.put("JORDANIA"           , "Dinar jordaniano");
-		currencyNameByCountry.put("KUAIT"              , "Dinar kuaitiano");
-		currencyNameByCountry.put("LAOS"               , "Kip laosiano");
-		currencyNameByCountry.put("LETONIA"            , "Euro");
-		currencyNameByCountry.put("LIBANO"             , "Libra libanesa");
-		currencyNameByCountry.put("LIBIA"              , "Dinar líbio");
-		currencyNameByCountry.put("LITUANIA"           , "Litas");
-		currencyNameByCountry.put("LUXEMBURGO"         , "Euro");
-		currencyNameByCountry.put("MALASIA"            , "Ringgit");
-		currencyNameByCountry.put("MALTA"              , "Euro");
-		currencyNameByCountry.put("MARROCOS"           , "Dirham marroquino");
-		currencyNameByCountry.put("MEXICO"             , "Peso novo mexicano");
-		currencyNameByCountry.put("MOCAMBIQUE"         , "Metical");
-		currencyNameByCountry.put("MOLDOVA"            , "Leu");
-		currencyNameByCountry.put("MONACO"             , "Euro");
-		currencyNameByCountry.put("NAMIBIA"            , "Dólar namibiano");
-		currencyNameByCountry.put("NORUEGA"            , "Coroa norueguesa");
-		currencyNameByCountry.put("NOVA ZELANDIA"	    , "Dólar da Nova Zelândia");
-		currencyNameByCountry.put("PANAMA"             , "Balboa");
-		currencyNameByCountry.put("PAQUISTAO"          , "Rúpia paquistanesa");
-		currencyNameByCountry.put("PAGUAI"             , "Guarani");
-		currencyNameByCountry.put("PERU"               , "Novo sol");
-		currencyNameByCountry.put("POLONIA"            , "Zloty");
-		currencyNameByCountry.put("PORTUGAL"           , "Euro");
-		currencyNameByCountry.put("QATAR"              , "Rial de Qatar");
-		currencyNameByCountry.put("QUENIA"             , "Xelim queniano");
-		currencyNameByCountry.put("REINO UNIDO"        , "Libra esterlina");
-		currencyNameByCountry.put("REPUBLICA TCHECA"   , "Coroa tcheca");
-		currencyNameByCountry.put("ROMENIA"            , "Novo leu romeno");
-		currencyNameByCountry.put("RUSSIA"             , "Rublo");
-		currencyNameByCountry.put("SIRIA"              , "Libra síria");
-		currencyNameByCountry.put("SRI LANKA"          , "Rúpia cingalesa");
-		currencyNameByCountry.put("SUECIA"             , "Coroa sueca");
-		currencyNameByCountry.put("SUICA"              , "Franco suíço");
-		currencyNameByCountry.put("TAILANDIA"          , "Baht");
-		currencyNameByCountry.put("TAIWAN"             , "Dólar taiwanês");
-		currencyNameByCountry.put("TUNISIA"            , "Dinar tunisiano");
-		currencyNameByCountry.put("TURQUIA"            , "Lira");
-		currencyNameByCountry.put("UCRANIA"            , "Hrivna");
-		currencyNameByCountry.put("ZONA DO EURO 2"     , "Euro");
-		currencyNameByCountry.put("URUGUAI"            , "Peso Uruguaio");
-		currencyNameByCountry.put("VENEZUELA"          , "Bolívar");
-		currencyNameByCountry.put("ZIMBABUE"           , "Dólar do Zimbábue");
+		currencyNameByCountry.put("BRASIL"				, "Real");
+		currencyNameByCountry.put("EUA"					, "Dólar Americano");
+		currencyNameByCountry.put("ZONA DO EURO"  	   	, "Euro");
+		currencyNameByCountry.put("AFRICA DO SUL"      	, "Rand");
+		currencyNameByCountry.put("ALBANIA"            	, "Lek");
+		currencyNameByCountry.put("ALEMANHA"           	, "Euro");
+		currencyNameByCountry.put("ANGOLA"             	, "Kwanza");
+		currencyNameByCountry.put("ARABIA SAUDITA"     	, "Rial saudita");
+		currencyNameByCountry.put("ARGELIA"            	, "Dinar");
+		currencyNameByCountry.put("ARGENTINA"          	, "Peso");
+		currencyNameByCountry.put("AUSTRALIA"      		, "Dólar australiano");
+		currencyNameByCountry.put("AUSTRIA"            	, "Euro");
+		currencyNameByCountry.put("BANGLADESH"         	, "Teca");
+		currencyNameByCountry.put("BELARUS"            	, "Rublo bielo-russo");
+		currencyNameByCountry.put("BELGICA"            	, "Euro");
+		currencyNameByCountry.put("BOLIVIA"            	, "Boliviano");
+		currencyNameByCountry.put("BRASIL"             	, "Real");
+		currencyNameByCountry.put("BULGARIA"           	, "Lev");
+		currencyNameByCountry.put("CANADA"             	, "Dólar canadense");
+		currencyNameByCountry.put("CAZAQUISTAO"        	, "Tenge");
+		currencyNameByCountry.put("CHILE"              	, "Peso");
+		currencyNameByCountry.put("CHINA"              	, "Yuan");
+		currencyNameByCountry.put("CHIPRE"             	, "Euro");
+		currencyNameByCountry.put("CINGAPURA"          	, "Dólar de Cingapura");
+		currencyNameByCountry.put("COLOMBIA"           	, "Peso colombiano");
+		currencyNameByCountry.put("COREIA DO SUL"      	, "Won sul-coreano");
+		currencyNameByCountry.put("CROACIA"            	, "Kuna");
+		currencyNameByCountry.put("DINAMARCA"          	, "Coroa dinamarquesa");
+		currencyNameByCountry.put("EGITO"              	, "Libra egípcia");
+		currencyNameByCountry.put("EMIRADOS ARABES"    	, "Dirham");
+		currencyNameByCountry.put("ESLOVAQUIA"         	, "Euro");
+		currencyNameByCountry.put("ESLOVENIA"          	, "Euro");
+		currencyNameByCountry.put("ESPANHA"            	, "Euro");
+		currencyNameByCountry.put("ESTADOS UNIDOS"     	, "Dólar Americano");
+		currencyNameByCountry.put("ESTONIA"            	, "Euro");
+		currencyNameByCountry.put("FILIPINAS"          	, "Peso filipino");
+		currencyNameByCountry.put("FINLANDIA"          	, "Euro");
+		currencyNameByCountry.put("FRANCA"             	, "Euro");
+		currencyNameByCountry.put("GRECIA"             	, "Euro");
+		currencyNameByCountry.put("HOLANDA"            	, "Euro");
+		currencyNameByCountry.put("HONG KONG"          	, "Dólar de Hong Kong");
+		currencyNameByCountry.put("HUNGRIA"            	, "Forinte");
+		currencyNameByCountry.put("INDIA"              	, "Rúpia indiana");
+		currencyNameByCountry.put("INDONESIA"          	, "Rúpia indonésia");
+		currencyNameByCountry.put("IRA"                	, "Rial iraniano");
+		currencyNameByCountry.put("IRAQUE"             	, "Dinar");
+		currencyNameByCountry.put("IRLANDA"            	, "Euro");
+		currencyNameByCountry.put("ISLANDIA"           	, "Coroa islandesa");
+		currencyNameByCountry.put("ISRAEL"             	, "Shekel");
+		currencyNameByCountry.put("ITALIA"             	, "Euro");
+		currencyNameByCountry.put("JAPAO"              	, "Iene");
+		currencyNameByCountry.put("JORDANIA"           	, "Dinar jordaniano");
+		currencyNameByCountry.put("KUAIT"              	, "Dinar kuaitiano");
+		currencyNameByCountry.put("LAOS"               	, "Kip laosiano");
+		currencyNameByCountry.put("LETONIA"            	, "Euro");
+		currencyNameByCountry.put("LIBANO"             	, "Libra libanesa");
+		currencyNameByCountry.put("LIBIA"              	, "Dinar líbio");
+		currencyNameByCountry.put("LITUANIA"           	, "Litas");
+		currencyNameByCountry.put("LUXEMBURGO"         	, "Euro");
+		currencyNameByCountry.put("MALASIA"            	, "Ringgit");
+		currencyNameByCountry.put("MALTA"              	, "Euro");
+		currencyNameByCountry.put("MARROCOS"           	, "Dirham marroquino");
+		currencyNameByCountry.put("MEXICO"             	, "Peso novo mexicano");
+		currencyNameByCountry.put("MOCAMBIQUE"         	, "Metical");
+		currencyNameByCountry.put("MOLDOVA"            	, "Leu");
+		currencyNameByCountry.put("MONACO"             	, "Euro");
+		currencyNameByCountry.put("NAMIBIA"            	, "Dólar namibiano");
+		currencyNameByCountry.put("NORUEGA"            	, "Coroa norueguesa");
+		currencyNameByCountry.put("NOVA ZELANDIA"	   	, "Dólar da Nova Zelândia");
+		currencyNameByCountry.put("PANAMA"             	, "Balboa");
+		currencyNameByCountry.put("PAQUISTAO"          	, "Rúpia paquistanesa");
+		currencyNameByCountry.put("PAGUAI"             	, "Guarani");
+		currencyNameByCountry.put("PERU"               	, "Novo sol");
+		currencyNameByCountry.put("POLONIA"            	, "Zloty");
+		currencyNameByCountry.put("PORTUGAL"           	, "Euro");
+		currencyNameByCountry.put("QATAR"              	, "Rial de Qatar");
+		currencyNameByCountry.put("QUENIA"             	, "Xelim queniano");
+		currencyNameByCountry.put("REINO UNIDO"        	, "Libra esterlina");
+		currencyNameByCountry.put("REPUBLICA TCHECA"	, "Coroa tcheca");
+		currencyNameByCountry.put("ROMENIA"            	, "Novo leu romeno");
+		currencyNameByCountry.put("RUSSIA"             	, "Rublo");
+		currencyNameByCountry.put("SIRIA"              	, "Libra síria");
+		currencyNameByCountry.put("SRI LANKA"          	, "Rúpia cingalesa");
+		currencyNameByCountry.put("SUECIA"             	, "Coroa sueca");
+		currencyNameByCountry.put("SUICA"              	, "Franco suíço");
+		currencyNameByCountry.put("TAILANDIA"          	, "Baht");
+		currencyNameByCountry.put("TAIWAN"             	, "Dólar taiwanês");
+		currencyNameByCountry.put("TUNISIA"            	, "Dinar tunisiano");
+		currencyNameByCountry.put("TURQUIA"            	, "Lira");
+		currencyNameByCountry.put("UCRANIA"            	, "Hrivna");
+		currencyNameByCountry.put("ZONA DO EURO 2"     	, "Euro");
+		currencyNameByCountry.put("URUGUAI"            	, "Peso Uruguaio");
+		currencyNameByCountry.put("VENEZUELA"          	, "Bolívar");
+		currencyNameByCountry.put("ZIMBABUE"           	, "Dólar do Zimbábue");
 	}
 	
-	public static String getCurrencyCodeByCountry(String countryName) {
-		return currencyCodeByCountry.get(countryName);
-	}
-	
-	public static String getCurrencyNameByCountry(String countryName) {
-		return currencyNameByCountry.get(countryName);
-	}
 }

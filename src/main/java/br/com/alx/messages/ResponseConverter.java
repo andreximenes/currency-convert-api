@@ -1,20 +1,20 @@
 package br.com.alx.messages;
 
-public class RetornoConversao {
+public class ResponseConverter {
 	
 	private int status;
 	private String info;
 	
 	private Object data;
 
-	public RetornoConversao(int status, String info, Object data) {
+	public ResponseConverter(int status, String info, Object data) {
 		super();
 		this.status = status;
 		this.info = info;
 		this.data = data;
 	}
 
-	public RetornoConversao() {
+	public ResponseConverter() {
 		super();
 	}
 
