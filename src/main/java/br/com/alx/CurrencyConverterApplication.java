@@ -8,14 +8,15 @@ import org.springframework.web.servlet.DispatcherServlet;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @SpringBootApplication
-@EnableWebMvc
+//@EnableWebMvc
 @EnableScheduling
 public class CurrencyConverterApplication {
 
 	public static void main(String[] args) {
-		ApplicationContext ctx = SpringApplication.run(CurrencyConverterApplication.class, args);
+		//ApplicationContext ctx = SpringApplication.run(CurrencyConverterApplication.class, args);
 
-        DispatcherServlet dispatcherServlet = (DispatcherServlet)ctx.getBean("dispatcherServlet");
-        dispatcherServlet.setThrowExceptionIfNoHandlerFound(true);
+        //DispatcherServlet dispatcherServlet = (DispatcherServlet)ctx.getBean("dispatcherServlet");
+        //dispatcherServlet.setThrowExceptionIfNoHandlerFound(true);
+		SpringApplication.run(CurrencyConverterApplication.class, args);
 	}
 }

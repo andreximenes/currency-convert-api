@@ -11,7 +11,7 @@ import br.com.alx.messages.ResponseConverter;
 import br.com.alx.messages.ResponseMessages;
 
 
-@ControllerAdvice
+//@ControllerAdvice
 public class ExceptionHandlerController {
 
     @ExceptionHandler(NoHandlerFoundException.class)
