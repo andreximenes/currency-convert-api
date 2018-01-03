@@ -42,15 +42,10 @@ public class ApiController {
 		ResponseConverter ret = new ResponseConverter();
 		
 		try {
-			RequestConverter req = new RequestConverter(value, from, to);
-			Conversion conversion;
-			conversion = conversor.calculate(req);
-			
 			ret.setStatus(ResponseMessages.SUCCESS.getCode());
 			ret.setInfo(ResponseMessages.SUCCESS.getMsg());
-			ret.setData(conversion);
-			
-		} catch (CurrencyCodeInvalidOrNotFountException e) {
+			ret.setData(conversor.calculate(value, from, to));
+		} catch (Exception e) {
 			ret.setStatus(ResponseMessages.ERROR.getCode());
 			ret.setInfo(e.getMessage());
 			ret.setData(null);
@@ -61,7 +56,7 @@ public class ApiController {
 	
 
 	@ResponseBody
-	@GetMapping("/update-quotes")
+	@GetMapping("/update-quotations")
 	public ResponseConverter atualizaCotacoes(){
 		ResponseConverter ret = new ResponseConverter();
 		try {
@@ -80,7 +75,7 @@ public class ApiController {
 	
 
 	@ResponseBody
-	@GetMapping("quote/country/{country}")
+	@GetMapping("quotation/country/{country}")
 	public ResponseConverter getCurrencyInfoByCountry(@PathVariable String country) throws CurrencyInfoInvalidOrNotFountException {
 		ResponseConverter ret = new ResponseConverter();
 		try {
@@ -97,7 +92,7 @@ public class ApiController {
 	}
 	
 	@ResponseBody
-	@GetMapping("quote/currency/{code}")
+	@GetMapping("quotation/currency/{code}")
 	public ResponseConverter getCurrencyInfoByCode(@PathVariable String code) throws CurrencyCodeInvalidOrNotFountException {
 		ResponseConverter ret = new ResponseConverter();
 		try {
@@ -114,7 +109,7 @@ public class ApiController {
 	}
 	
 	@ResponseBody
-	@GetMapping("quote/all")
+	@GetMapping("/quotations")
 	public ResponseConverter getLista() {
 		ResponseConverter ret = new ResponseConverter();
 		ret.setStatus(ResponseMessages.SUCCESS.getCode());

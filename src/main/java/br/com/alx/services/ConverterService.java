@@ -15,6 +15,7 @@ import br.com.alx.domain.CurrencyInfo;
 import br.com.alx.exceptions.ConverterServiceException;
 import br.com.alx.exceptions.CurrencyCodeInvalidOrNotFountException;
 import br.com.alx.exceptions.CurrencyInfoInvalidOrNotFountException;
+import br.com.alx.exceptions.InvalidAttributesCalcException;
 import br.com.alx.messages.Conversion;
 import br.com.alx.messages.RequestConverter;
 
@@ -53,13 +54,17 @@ public class ConverterService {
 		ciService.updateQuotes(quotes);
 	}
 	
-	public Conversion calculate (RequestConverter request) throws IOException, CurrencyCodeInvalidOrNotFountException {
+	public Conversion calculate (BigDecimal value, String from, String to) throws IOException, CurrencyCodeInvalidOrNotFountException, InvalidAttributesCalcException {
 		
-		CurrencyInfo ciFrom = ciService.findFirstByCurrencyCode(request.getFrom());
-		CurrencyInfo ciTo 	= ciService.findFirstByCurrencyCode(request.getTo());
-		Conversion retorno  = new Conversion(request.getFrom(), request.getTo());
+		if (!validateData(value, from, to)){
+			throw new InvalidAttributesCalcException();
+		}
 		
-		BigDecimal valorAConverter 	= request.getValue();
+		CurrencyInfo ciFrom = ciService.findFirstByCurrencyCode(from);
+		CurrencyInfo ciTo 	= ciService.findFirstByCurrencyCode(to);
+		Conversion retorno  = new Conversion(from, to, ciFrom.getUpdateDate());
+		
+		BigDecimal valorAConverter 	= value;
 		BigDecimal quoteFrom 		= ciFrom.getQuote();
 		BigDecimal quoteTo			= ciTo.getQuote();
 		BigDecimal BRLValue 		= valorAConverter.multiply(quoteFrom);
@@ -67,5 +72,14 @@ public class ConverterService {
 		
 		retorno.setTotal(convertedValue);
 		return retorno;
+	}
+
+	private boolean validateData(BigDecimal value, String from, String to) {
+		boolean ret = true;
+		if (value == null || value.min(BigDecimal.ZERO).equals(true) || value.equals(BigDecimal.ZERO) 
+				|| from == null || from.equals("") || to == null || to.equals("")) {
+			return false;
+		}
+		return ret;
 	}
 }

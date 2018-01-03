@@ -2,7 +2,8 @@ package br.com.alx.messages;
 
 public enum ResponseMessages {
 	SUCCESS(200, "SUCCESS"),
-    ERROR(500, "ERROR");
+    ERROR(500, "ERROR"),
+	NOT_FOUND(404, "URL NOT FOUND");
 
 	    private int code;
 	    private String msg;
