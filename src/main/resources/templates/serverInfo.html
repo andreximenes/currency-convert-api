@@ -34,18 +34,19 @@
 									Para realizar o cálculo de conversão entre duas moedas
 								</h4>
 								<p>
-								Os parâmertros <b>value, from</b> e  <b>to</b>
-								devem ser passados corretamente na URL.
+								Os parâmertros <span style="color:blue;font-weight: bold;">valor</span>, moeda origrem (<span style="color:blue;font-weight: bold;">BRL</span>) 
+								e moeda destino (<span style="color:blue;font-weight: bold;">BRL</span>)
+								devem ser passados corretamente via URL conforme exemplo abaixo.
 								</p>
 								<hr/>
 								<h4>Endreço:</h4>
 								 
-								<p>Passando o parametros <b>valor = 3000, de = BRL</b> e <b>para = USD</b>: 
+								<p>Passando o parâmetros <b>valor = 3000, de = BRL</b> e <b>para = USD</b>: 
 									<pre>GET /api/v1/calc/<span style="color:blue;font-weight: bold;">3000&amp;BRL-USD</span>
 									</pre> 
 								</p>
 								
-								<h4>Retorno:</h4>
+								<h4>Resultado:</h4>
 <pre>
 {
 	status: 200,
@@ -129,7 +130,7 @@
 									<pre>GET /api/v1/quote&amp;country=<span style="color:blue;font-weight: bold;">australia</span></pre>
 								</p>
 								
-								<h4>Retorno:</h4>
+								<h4>Resultado:</h4>
 <pre>
 {
 	status: 200,
