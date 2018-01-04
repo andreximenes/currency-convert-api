@@ -59,6 +59,8 @@ public class ConverterService {
 		if (!validateData(value, from, to)){
 			throw new InvalidAttributesCalcException();
 		}
+		from = from.toUpperCase();
+		to = to.toUpperCase();
 		
 		CurrencyInfo ciFrom = ciService.findFirstByCurrencyCode(from);
 		CurrencyInfo ciTo 	= ciService.findFirstByCurrencyCode(to);

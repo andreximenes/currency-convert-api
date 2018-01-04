@@ -3,11 +3,13 @@ package br.com.alx.controllers;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
@@ -34,14 +36,7 @@ public class ApiController {
 	}
 	
 	@ResponseBody
-	@GetMapping({"", "/"})
-	public ModelAndView getServerInfo() {
-		ModelAndView modelAndView = new ModelAndView("serverInfo");
-		return 	modelAndView;
-	}
-	
-	@ResponseBody
-	@GetMapping("/calc/value={value}&from={from}&to={to}")
+	@GetMapping("/calc/{value}&{from}-{to}")
     public ResponseConverter index(@PathVariable("value") BigDecimal value,
     					@PathVariable("from") String from,
     					@PathVariable("to") String to) throws IOException {
@@ -62,7 +57,7 @@ public class ApiController {
 	
 
 	@ResponseBody
-	@GetMapping("/update-quotations")
+	@GetMapping("/update-quotes")
 	public ResponseConverter atualizaCotacoes(){
 		ResponseConverter ret = new ResponseConverter();
 		try {
@@ -79,17 +74,30 @@ public class ApiController {
 		return ret;
 	}
 	
-
 	@ResponseBody
-	@GetMapping("quotation/country/{country}")
-	public ResponseConverter getCurrencyInfoByCountry(@PathVariable String country) throws CurrencyInfoInvalidOrNotFountException {
+	@GetMapping({"/quote?country={country}", "/quote?code={code}"})
+	public ResponseConverter getCurrencyInfoByCountry(@PathVariable Map<String, String> pathVariablesMap) 
+			throws CurrencyInfoInvalidOrNotFountException {
+		
 		ResponseConverter ret = new ResponseConverter();
+		CurrencyInfo data = null;
 		try {
-			CurrencyInfo data = service.findByCountry(country.toUpperCase());
+			
+			if (pathVariablesMap.containsKey("country") && pathVariablesMap.get("country") != null &&
+					!"".equals(pathVariablesMap.get("country"))) {
+				data = service.findByCountry(pathVariablesMap.get("country").toUpperCase());
+				
+			} else if (pathVariablesMap.containsKey("code") && pathVariablesMap.get("code") != null &&
+					!"".equals(pathVariablesMap.get("code"))) {
+				data = service.findFirstByCurrencyCode(pathVariablesMap.get("code").toUpperCase());
+			} else {
+				throw new Exception("Invalid request parameter!");
+			}
+			
 			ret.setStatus(ResponseMessages.SUCCESS.getCode());
 			ret.setInfo(ResponseMessages.SUCCESS.getMsg());
 			ret.setData(data);
-		} catch (CurrencyInfoInvalidOrNotFountException e) {
+		} catch (Exception e) {
 			ret.setStatus(ResponseMessages.ERROR.getCode());
 			ret.setInfo(e.getMessage());
 			ret.setData(null);
@@ -98,24 +106,7 @@ public class ApiController {
 	}
 	
 	@ResponseBody
-	@GetMapping("quotation/currency/{code}")
-	public ResponseConverter getCurrencyInfoByCode(@PathVariable String code) throws CurrencyCodeInvalidOrNotFountException {
-		ResponseConverter ret = new ResponseConverter();
-		try {
-			CurrencyInfo data = service.findFirstByCurrencyCode(code.toUpperCase());
-			ret.setStatus(ResponseMessages.SUCCESS.getCode());
-			ret.setInfo(ResponseMessages.SUCCESS.getMsg());
-			ret.setData(data);
-		} catch (CurrencyCodeInvalidOrNotFountException e) {
-			ret.setStatus(ResponseMessages.ERROR.getCode());
-			ret.setInfo(e.getMessage());
-			ret.setData(null);
-		}
-		return ret;
-	}
-	
-	@ResponseBody
-	@GetMapping("/quotations")
+	@GetMapping({"/", "/all"})
 	public ResponseConverter getLista() {
 		ResponseConverter ret = new ResponseConverter();
 		ret.setStatus(ResponseMessages.SUCCESS.getCode());

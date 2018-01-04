@@ -40,8 +40,8 @@
 								<hr/>
 								<h4>Endreço:</h4>
 								 
-								<p>Passando o parametros <b>value = 3000, from = BRL</b> e <b>to = USD</b>: 
-									<pre>GET /api/v1/calc/<span style="color:blue;font-weight: bold;">value=3000&amp;from=BRL&amp;to=USD"</span>
+								<p>Passando o parametros <b>valor = 3000, de = BRL</b> e <b>para = USD</b>: 
+									<pre>GET /api/v1/calc/<span style="color:blue;font-weight: bold;">3000&amp;BRL-USD</span>
 									</pre> 
 								</p>
 								
@@ -54,7 +54,7 @@
 		from: "BRL",
 		to: "USD",
 		total: 920.22,
-		lastUpdateTime: 1514950487334
+		lastUpdateTime: "2018-01-03T23:58:36.994Z"
 	}
 }
 </pre>
@@ -73,7 +73,7 @@
 								</h4>
 								<hr/>
 								<h4>Endreço:</h4>
-								<pre> GET /api/v1/quotations</pre>
+								<pre> GET  /api/v1/   ou   /api/v1/all</pre>
 								<h4>Resultado:</h4>
 <pre>
 {
@@ -86,7 +86,7 @@
 			currencyName: "Real",
 			currencyCode: "BRL",
 			quote: 1,
-			updateDate: 1514950487334
+			updateDate: "2018-01-03T23:58:36.994Z"
 		},
 		{
 			id: 2,
@@ -94,7 +94,7 @@
 			currencyName: "Dólar Americano",
 			currencyCode: "USD",
 			quote: 3.2601,
-			updateDate: 1514950487268
+			updateDate: "2018-01-03T23:58:36.994Z"
 		},
 		{
 			id: 3,
@@ -102,7 +102,7 @@
 			currencyName: "Euro",
 			currencyCode: "EUR",
 			quote: 3.9264,
-			updateDate: 1514950487276
+			updateDate: "2018-01-03T23:58:36.994Z"
 		},
 		...
 	]
@@ -123,10 +123,10 @@
 								<h4>Endreço:</h4>
 								 
 								<p>Passando o codigo da moeda do país: 
-									<pre>GET /api/v1/quotation/currency/<span style="color:blue;font-weight: bold;">EUR</span></pre>
+									<pre>GET /api/v1/quote&amp;code=<span style="color:blue;font-weight: bold;">EUR</span></pre>
 								</p>
 								<p>Passando o nome do país: 
-									<pre>GET /api/v1/quotation/country/<span style="color:blue;font-weight: bold;">europa</span></pre>
+									<pre>GET /api/v1/quote&amp;country=<span style="color:blue;font-weight: bold;">australia</span></pre>
 								</p>
 								
 								<h4>Retorno:</h4>

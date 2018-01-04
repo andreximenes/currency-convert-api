@@ -6,8 +6,6 @@ import java.util.Date;
 import javax.persistence.*;
 import javax.validation.constraints.Digits;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 @Entity
 public class CurrencyInfo implements Serializable {
 

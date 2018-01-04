@@ -118,8 +118,8 @@ public class Util {
 		currencyCodeByCountry.put("NAMIBIA"               		, "NAD");
 		currencyCodeByCountry.put("NORUEGA"              			, "NOK");
 		currencyCodeByCountry.put("NOVA ZELANDIA"  				, "NZD");
-		currencyCodeByCountry.put("PPANAMA"                    	, "USD");
-		currencyCodeByCountry.put("PPAQUISTAO"          			, "PKR");
+		currencyCodeByCountry.put("PANAMA"                    	, "USD");
+		currencyCodeByCountry.put("PAQUISTAO"          			, "PKR");
 		currencyCodeByCountry.put("PAGUAI"                     	, "PYG");
 		currencyCodeByCountry.put("PERU"                       	, "PEN");
 		currencyCodeByCountry.put("POLONIA"                    	, "PLN");
@@ -142,7 +142,7 @@ public class Util {
 		currencyCodeByCountry.put("ZONA DO EURO 2"             	, "EUR");
 		currencyCodeByCountry.put("URUGUAI"                 		, "UYU");
 		currencyCodeByCountry.put("VENEZUELA"                  	, "VEF");
-		currencyCodeByCountry.put("ZIMBABUE"            			, "USD");
+		currencyCodeByCountry.put("ZIMBABUE"            			, "ZWD");
 		
 		// currencyNameByCountry
 		currencyNameByCountry = new HashMap<String, String>();
