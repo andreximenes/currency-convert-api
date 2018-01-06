@@ -7,7 +7,7 @@ $(document).ready(function () {
 
 		if (validate(mo, md, val)){
 			$.ajax({
-			    url: 'http://localhost:8080/api/v1/calc/'+val+'&'+mo+'-'+md ,
+			    url: 'https://localhost/api/v1/calc/'+val+'&'+mo+'-'+md ,
 			    contentType: 'application/json',
 			    dataType: 'json',
 			    type: 'get',
