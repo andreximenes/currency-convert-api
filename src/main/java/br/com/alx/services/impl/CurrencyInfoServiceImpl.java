@@ -86,17 +86,17 @@ public class CurrencyInfoServiceImpl implements CurrencyInfoService {
 	public void updateQuotes(String[] quotes) {
 		CurrencyInfo ci = null;
 		for (int i=0; i<quotes.length; i++){
-			ci = repository.findByCountryAndCurrencyCode(Util.countryNames[i],
-					Util.getCurrencyCodeByCountry(Util.countryNames[i]));
+			ci = repository.findByCountryAndCurrencyCode(Util.getCountryNames()[i],
+					Util.getCurrencyCodeByCountry(Util.getCountryNames()[i]));
 			if (ci != null) {
 				ci.setQuote(new BigDecimal(quotes[i]));
 				ci.setUpdateDate(new Date());
 				//TODO: depois remover essa linha abaixo, colocada apenas para resolver o problema dos EUA.
-				ci.setCurrencyName(Util.getCurrencyNameByCountry(Util.countryNames[i]));
+				ci.setCurrencyName(Util.getCurrencyNameByCountry(Util.getCountryNames()[i]));
 			} else {
-				ci = new CurrencyInfo(Util.countryNames[i],
-						Util.getCurrencyNameByCountry(Util.countryNames[i]), 
-						Util.getCurrencyCodeByCountry(Util.countryNames[i]), 
+				ci = new CurrencyInfo(Util.getCountryNames()[i],
+						Util.getCurrencyNameByCountry(Util.getCountryNames()[i]), 
+						Util.getCurrencyCodeByCountry(Util.getCountryNames()[i]), 
 						null
 						, new BigDecimal(quotes[i]), new Date());
 			}

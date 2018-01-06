@@ -5,8 +5,27 @@ import java.util.HashMap;
 public class Util {
 	private static HashMap<String, String> currencyCodeByCountry;
 	private static HashMap<String, String> currencyNameByCountry;
-	
-	public static String[] currencyCodes = new String[]{
+	private static String[] currencyCodes;
+	private static String[] countryNames;
+
+	public static String getCurrencyCodeByCountry(String countryName) {
+		return currencyCodeByCountry.get(countryName);
+	}
+
+	public static String getCurrencyNameByCountry(String countryName) {
+		return currencyNameByCountry.get(countryName);
+	}
+
+	public static String[] getCurrencyCodes() {
+		return currencyCodes;
+	}
+
+	public static String[] getCountryNames() {
+		return countryNames;
+	}
+
+	static {
+		currencyCodes = new String[]{
 			"BRL", "USD", "EUR", "ZAR", "ALL", "EUR", "AOA", "SAR", "DZD", "ARS", 
 			"AUD", "EUR", "BDT", "BYR", "EUR", "BOB", "BRL", "BGN", "CAD", "KZT", 
 			"CLP", "CNY", "EUR", "SGD", "COP", "KRW", "HRK", "DKK", "EGP", "AED",
@@ -17,9 +36,9 @@ public class Util {
 			"PKR", "PYG", "PEN", "PLN", "EUR", "QAR", "KES", "GBP", "CZK", "RON",
 			"RUB", "SYP", "LKR", "SEK", "CHF", "THB", "TWD", "TND", "TRY", "UAH",
 			"EUR", "UYU", "VEF", "USD"
-	};
-	
-	public static String[] countryNames = new String[] {
+		};
+
+		countryNames = new String[] {
 			"BRASIL", "EUA", "ZONA DO EURO", "AFRICA DO SUL", "ALBANIA",
 			"ALEMANHA", "ANGOLA", "ARABIA SAUDITA", "ARGELIA", "ARGENTINA",
 			"AUSTRALIA", "AUSTRIA", "BANGLADESH", "BELARUS", "BELGICA",
@@ -36,16 +55,6 @@ public class Util {
 			"ROMENIA", "RUSSIA", "SIRIA", "SRI LANKA", "SUECIA", "SUICA", "TAILANDIA", "TAIWAN",        
 			"TUNISIA", "TURQUIA", "UCRANIA", "ZONA DO EURO 2", "URUGUAI", "VENEZUELA", "ZIMBABUE"    
 		};
-
-	public static String getCurrencyCodeByCountry(String countryName) {
-		return currencyCodeByCountry.get(countryName);
-	}
-	
-	public static String getCurrencyNameByCountry(String countryName) {
-		return currencyNameByCountry.get(countryName);
-	}
-
-	static {
 		// currencyCodeByCountry
 		currencyCodeByCountry = new HashMap<String, String>();
 		currencyCodeByCountry.put("BRASIL"                     	, "BRL");
@@ -143,7 +152,7 @@ public class Util {
 		currencyCodeByCountry.put("URUGUAI"                 		, "UYU");
 		currencyCodeByCountry.put("VENEZUELA"                  	, "VEF");
 		currencyCodeByCountry.put("ZIMBABUE"            			, "ZWD");
-		
+
 		// currencyNameByCountry
 		currencyNameByCountry = new HashMap<String, String>();
 		currencyNameByCountry.put("BRASIL"				, "Real");
@@ -241,5 +250,5 @@ public class Util {
 		currencyNameByCountry.put("VENEZUELA"          	, "Bolívar");
 		currencyNameByCountry.put("ZIMBABUE"           	, "Dólar do Zimbábue");
 	}
-	
+
 }
