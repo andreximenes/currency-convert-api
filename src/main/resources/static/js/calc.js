@@ -13,7 +13,7 @@ $(document).ready(function () {
 			    type: 'get',
 			    success: function(resposta) {
 			        console.log(resposta);
-			        $('#valorConvertido').text('R$ ' +  mascaraValor(resposta.data.total));
+			        $('#valorConvertido').text('Resultado: ' +  mascaraValor(resposta.data.total));
 			        $('#valorConvertido').focus();
 			    }.bind(this),
 			    error: function() {
