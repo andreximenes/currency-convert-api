@@ -91,6 +91,8 @@ public class CurrencyInfoServiceImpl implements CurrencyInfoService {
 			if (ci != null) {
 				ci.setQuote(new BigDecimal(quotes[i]));
 				ci.setUpdateDate(new Date());
+				//TODO: depois remover essa linha abaixo, colocada apenas para resolver o problema dos EUA.
+				ci.setCurrencyName(Util.getCurrencyNameByCountry(Util.countryNames[i]));
 			} else {
 				ci = new CurrencyInfo(Util.countryNames[i],
 						Util.getCurrencyNameByCountry(Util.countryNames[i]), 

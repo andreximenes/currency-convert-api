@@ -179,7 +179,7 @@ public class Util {
 		currencyNameByCountry.put("ESLOVAQUIA"         	, "Euro");
 		currencyNameByCountry.put("ESLOVENIA"          	, "Euro");
 		currencyNameByCountry.put("ESPANHA"            	, "Euro");
-		currencyNameByCountry.put("ESTADOS UNIDOS"     	, "Dólar Americano");
+		currencyNameByCountry.put("ESTADOS UNIDOS DA AMERICA" 	, "Dólar Americano");
 		currencyNameByCountry.put("ESTONIA"            	, "Euro");
 		currencyNameByCountry.put("FILIPINAS"          	, "Peso filipino");
 		currencyNameByCountry.put("FINLANDIA"          	, "Euro");

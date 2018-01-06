@@ -8,6 +8,11 @@
 		<link th:href="@{/webjars/bootstrap/css/bootstrap-theme.min.css}" rel="stylesheet"/>
 		<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
 		<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+		<style>
+			body{
+				background-color: #F2F2F2;
+			}
+		</style>
 	</head>
 	<body>
 	
@@ -19,13 +24,13 @@
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-md-8">
-					<h2>Sobre a API</h2> 
-					<h4>Api desenvolvida para facilitar o cálculo de conversão de moedas a partir
+					<h3>Sobre a API</h3> 
+					<p>Api desenvolvida para facilitar o cálculo de conversão de moedas a partir
 					da cotação de venda da moeda desejada. Todas as cotações são baseadas na moeda
 					brasileira R$ (BRL). E a API é atualizada a cada 30 minutos.
-					</h4> 
+					</p> 
 					<hr/>
-					<h2>Como Usar?</h2>
+					<h3>Como Usar?</h3>
 					<div class="bs-example"> 
 						<div class="panel panel-default"> 
 							<div class="panel-body"> 
@@ -153,35 +158,80 @@
 					
 				</div>
 				<div class="col-md-4">
-					<div class="bs-example" data-example-id="panel-with-footer"> 
-						<div class="panel panel-default"> 
-							<div class="panel-body"> 
-								API Information 
-								<table class="table table-condensed">
-									<tr>
-										<th>Versão</th>
-										<td>1.0 beta</td>
-									</tr>
-									<tr>
-										<th>Source Data</th>
-										<td><a href="https://economia.uol.com.br/cotacoes/">UOL Cotações</a></td>
-									</tr>
-									<tr>
-										<th>Owner</th>
-										<td>André Luiz Ximenes</td>
-									</tr>
-									<tr>
-										<th>Contact</th>
-										<td> <a href="mailto:me@andreximenes.com">me@andreximenes.com</a></td>
-									</tr>
-								</table>
-							</div> 
-							<div class="panel-footer">
-							</div> 
+					<div class="panel panel-default"> 
+						<div class="panel-body"> 
+							<h4>Calculadora</h4> 
+							<hr/>
+							<form class="form-horizontal" id="calc-form">
+								<div class="form-group">
+							    		<label for="inputEmail3" class="col-sm-2 control-label">Converter</label>
+						    		</div>
+								<div class="form-group">
+							    		<label for="de" class="col-sm-2 control-label">De:</label>
+							    		<div class="col-sm-10">
+							      		<select class="form-control input-sm" required="required" id="moedaOrigem" name="moedaOrigem">
+											<option value="0" >selecione uma moeda...</option>
+											<option th:each="moedaOrigem : ${listaMoedas}" th:value="${moedaOrigem.currencyCode}" 
+												th:text="${moedaOrigem.country} +' - '+ ${moedaOrigem.currencyName} + ' [' + ${moedaOrigem.currencyCode} + ']'"></option>
+										</select>
+							    		</div>
+							 	</div>
+							 	<div class="form-group">
+							    		<label for="de" class="col-sm-2 control-label">Para:</label>
+							    		<div class="col-sm-10">
+							      		<select class="form-control input-sm" required="required" id="moedaDestino" name="moedaDestino" th:value="${moedaDestino}">
+											<option value="0" >converter para...</option>
+											<option th:each="moedaDestino : ${listaMoedas}" th:value="${moedaDestino.currencyCode}" 
+												th:text="${moedaDestino.country} +' - '+ ${moedaDestino.currencyName} + ' [' + ${moedaDestino.currencyCode} + ']'"></option>
+										</select>
+							    		</div>
+							 	</div>
+							 	<div class="form-group">
+							    		<label for="valor" class="col-sm-2 control-label">Valor:</label>
+							    		<div class="col-sm-10">
+							      		<input type="text" required="required" class="form-control input-sm" id="valor"  name="valor" placeholder="digite um valor..."/>
+							    		</div>
+							 	</div>
+							 	<div class="form-group">
+							 		<div class="col-sm-12">
+							 			<button type="submit" class="btn btn-primary col-sm-12">Converter</button>
+							 		</div>
+							 		
+							 	</div>
+							</form>
+						</div>
+						<div class="panel-footer" style="text-align:right">
+							<h3 id="valorConvertido" th:text="${valorConvertido}"></h3>
+						</div> 
+					</div>
+					
+					<div class="panel panel-default"> 
+						<div class="panel-body"> 
+							<b>API Info</b> 
+							<table class="table table-condensed">
+								<tr>
+									<th>Versão</th>
+									<td>1.0 beta</td>
+								</tr>
+								<tr>
+									<th>Fonte de Dados</th>
+									<td><a href="https://economia.uol.com.br/cotacoes/">UOL Cotações</a></td>
+								</tr>
+								<tr>
+									<th>Proprietário</th>
+									<td>André Luiz Ximenes</td>
+								</tr>
+								<tr>
+									<th>Contato</th>
+									<td> <a href="mailto:me@andreximenes.com">me@andreximenes.com</a></td>
+								</tr>
+							</table>
 						</div> 
 					</div>
 				</div>
 			</div>
 		</div>
+		
+		<script type="text/javascript" src="js/calc.js"></script>
 	</body>
 </html>
