@@ -7,7 +7,7 @@ $(document).ready(function () {
 
 		if (validate(mo, md, val)){
 			$.ajax({
-			    url: 'https://localhost/api/v1/calc/'+val+'&'+mo+'-'+md ,
+			    url: 'https://currency-convert-api.herokuapp.com/api/v1/calc/'+val+'&'+mo+'-'+md ,
 			    contentType: 'application/json',
 			    dataType: 'json',
 			    type: 'get',
